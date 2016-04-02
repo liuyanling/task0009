@@ -1,0 +1,629 @@
+*{
+  margin:0px;
+  /*不要随便设padding，此处设padding：0px，
+  直接导致正文侧边栏的个人报表列表是一列，而没有分级。*/
+}
+$non_color: #ededf0;
+
+@mixin size($width,$heigh){
+  width:$width;
+  height:$heigh;
+}
+@mixin cicle($cicle_size){
+  border-radius: $cicle_size;
+  -moz-border-radius:$cicle_size;
+  -webkit-border-radius: $cicle_size;
+}
+@mixin font_every{
+  font:12px/1.5 Microsoft YaHei,arial,sans-serif,'宋体';
+  color:white;
+}
+@mixin box-size($pad_px1, $pad_px) {
+  box-sizing: border-box;
+  padding: $pad_px1 $pad_px;
+}
+@mixin align{
+  display: flex;
+  align-items: center;
+}
+@mixin align_2{
+  display: flex;
+  justify-content: space-between;
+}
+@mixin align_2{
+  @include align;
+  justify-content: space-between;
+}
+
+header{
+  background-color: #2189bf;
+  #left_bar{
+    @include size(40px,40px);
+    background-color: white;
+    position: relative;
+    >div{
+      &:after{
+        content:'';
+        position: absolute;
+        bottom:-3px;
+        right:-3px;
+        @include size(15px,15px);
+        background-color: white;
+        border: 3px solid #2189bf;
+      }
+    }
+  }
+  >div {
+    @include size(100%,60px);
+    @include box_size(0px ,100px);
+    @include align_2;
+
+    #right_bar {
+      width: 380px;
+      input{
+        display: inline-block;
+        @include size(280px,30px);
+        background-color: white;
+        @include cicle(25px);
+      }
+      img{
+        display: inline-block;
+        @include size(20px,20px);
+        margin-bottom: -4px;
+        }
+      a {
+        display: inline-block;
+        @include font_every;
+        text-decoration: none;
+       }
+    }
+  }
+}
+.left_right{
+  height: 100%;
+  @include  align_2;
+  align-items: stretch;
+}
+aside{
+  overflow: hidden;
+  width: 15%;
+  background-color: #2a2e3d;
+  >.aside_first{
+    @include box_size(25px, 80px);
+    @include align_2;
+    .logo{
+      @include size(50px,50px);
+      @include cicle(50%);
+      border: 1px solid $non_color;
+      @include align;
+      justify-content:center;
+      i{
+        display: block;
+        @include size(45px,45px);
+        @include cicle(50%);
+        background-color: $non_color;
+     }
+    }
+    span{
+      display: block;
+      @include font_every;
+      font-size: 15px!important;
+    }
+
+  }
+  >.aside_middle{
+    @include box_size(0px, 80px);
+    @include align_2;
+    font:12px/1.5 Microsoft YaHei,arial,sans-serif,'宋体';
+    color:#999 ;
+    div{
+      @include size(60px, 60px);
+    }
+    span{
+      display: block;
+    }
+  }
+  >.aside_bottom{
+    position: relative;
+    font:12px/1.5 Microsoft YaHei,arial,sans-serif,'宋体';
+    color:#999 ;
+    >ul{
+      line-height: 5;
+      margin-left:35px;
+      span{
+      @include font_every;
+      }
+      .line_heights{
+        line-height: 3!important;
+      }
+    }
+    ul{
+      list-style: none;
+      i{
+        margin-bottom: -3px;
+        display: inline-block;
+        background: url(images/task_1_9_1.png) no-repeat;
+      }
+      >li{
+        transition: all ease 0.5s;
+        cursor: pointer;
+        &:hover{
+         background: #282c51;
+        }
+      }
+      /*将从图层导出的png图片上的小图标对应到我们设计文档的所需位置*/
+      .icons_1{
+        @include  size(18px,15px);
+        background-position:-43px -218px; ;
+      }
+      .icons_2{
+        @include  size(40px,15px);
+        background-position:  -67px -250px;
+      }
+      .icons_3{
+        @include  size(40px,15px);
+        background-position:-67px -278px; ;
+      }
+      .icons_4{
+        @include  size(18px,15px);
+        background-position:-98px -308px;
+      }
+      .icons_5{
+        @include  size(18px,15px);
+        background-position:-98px -337px;
+      }
+      .icons_6{
+        @include  size(40px,15px);
+        background-position:-67px -368px ;
+      }
+      .icons_7{
+        @include  size(18px,15px);
+        background-position:-43px -411px; ;
+      }
+      .icons_8{
+         @include  size(18px,15px);
+         background-position:-43px -459px;;
+       }
+      .icons_9{
+        @include  size(18px,15px);
+        background-position: -43px -411px;;
+      }
+      .icons_10{
+        @include  size(18px,15px);
+        background-position:-43px -411px;;
+      }
+      .icons_11{
+        @include  size(18px,15px);
+        background-position:-43px -603px;;
+      }
+
+    }
+    /*个人报表处的li元素所包含的元素的背景色不同，通过在上面加一个纯色的
+    块级元素实现，加入后浮于上方，覆盖了字和图标，通过透明度来显现*/
+    .float_color{
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      @include  size(285px,213px);
+      background: #0D17FF;
+      opacity: 0.1;
+    }
+  }
+}
+section{
+  width: 85%;
+  span{
+    display: inline-block;
+    padding:10px;
+    @include  font_every;
+    color: #aaa!important;
+  }
+  #span_color{
+    color: #2189bf!important;
+  }
+  .contents {
+    background: #eeeeed;
+    padding: 20px 45px;
+    .inquire {
+      padding: 10px 165px;
+      position: relative;
+      background: white !important;
+      > div {
+        display: inline-table;
+      }
+    }
+    .short {
+      @include size(78px, 27px);
+    }
+    .long {
+      @include size(120px, 27px);
+    }
+    .inquire_f {
+      @include size(290px, 50px);
+    }
+    .inquire_s {
+      position: relative;
+      @include size(207px, 58px);
+      i {
+        background: url(images/task_1_9_2.png) no-repeat;
+        @include size(30px, 35px);
+        background-position: -666px -131px;
+        display: inline-block;
+        position: absolute;
+        top: 21px;
+      }
+      a {
+        position: absolute;
+        top: 32px;
+        right: 15px;
+        font-size: 7px;
+        color: white;
+        cursor: pointer;
+      }
+    }
+    .inquire_t {
+      margin: 0px 145px;
+      @include size(300px, 75px);
+    }
+    .search {
+      position: absolute;
+      bottom: 35px;
+      right: 300px;
+      background: #2189bf;
+      color: white;
+      @include size(68px, 27px);
+      background: #2189bf;
+      color: white;
+    }
+    .list {
+      @include align_2;
+      height: 150px;
+      > * {
+        background: white;
+        text-align: center;
+        cursor: pointer;
+        transition: all ease 0.3s;
+
+      }
+      .insert {
+        display: inline-block;
+        @include size(40px, 86px);
+        background: white !important;
+        margin-top: 20px;
+        &:hover {
+          box-shadow: 1px 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
+      }
+      .first i {
+        background: url(images/task_1_9_2.png) no-repeat;
+        background-position: -315px -189px;
+        @include size(40px, 86px);
+        display: inline-block;
+      }
+      .second i {
+        background: url(images/task_1_9_2.png) no-repeat;
+        background-position: -1039px -188px;
+        @include size(40px, 86px);
+        display: inline-block;
+      }
+      .list1 {
+        @include size(185px, 65px);
+        margin-top: 20px;
+        padding-top: 20px;
+        &:hover {
+          border-top: 3px solid #2189bf;
+          box-shadow: 1px 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        span {
+          display: inline-block;
+          color: black !important;
+          font-size: 15px !important;
+          padding: 0 !important;
+        }
+        div {
+          color: #d76d1e;
+          font-size: 22px;
+          font-weight: 700;
+        }
+        i {
+          background: url(images/task_1_9_2.png) no-repeat;
+          @include size(20px, 21px);
+          background-position: -837px -234px;
+          display: inline-block;
+        }
+
+      }
+      .list2 {
+        @include size(185px, 65px);
+        padding-top: 20px;
+        margin-top: 20px;
+        &:hover {
+          border-top: 2px solid #2189bf;
+          box-shadow: 1px 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
+        i {
+          background: url(images/task_1_9_2.png) no-repeat;
+          @include size(37px, 35px);
+          background-position: -1096px -214px;
+          display: inline-block;
+        }
+        #book {
+          color: black !important;
+          font-size: 16px !important;
+        }
+      }
+    }
+    .statistics {
+      p {
+        margin: 30px 0px 10px 0px;
+      }
+      > div {
+        @include align_2;
+        span {
+          display: block;
+          padding: 10px 10px 2px 12px !important;
+        }
+        .size {
+          color: black !important;
+          font-size: 15px !important;
+        }
+      }
+      /*$col_1: #43b0a8;
+      $col_2: #3a8bc1;
+      $col_3: #cf4b38;
+      $col_4: #e1cd47;*/
+
+      @mixin buju($i,$cols) {
+        .stati_#{$i} {
+          background: white;
+          @include size(300px, 85px);
+          @include align_2;
+          border-left: 3px solid $cols;
+          box-shadow: 1px 0 1px 1px rgba(0, 0, 0, 0.1);
+          > div {
+            @include size(60px, 60px);
+            margin-right: 20px;
+          }
+          .col {
+            background: $cols;
+          }
+        }
+      }
+      @include buju(1, #43b0a8);
+      @include buju(2, #3a8bc1);
+      @include buju(3, #cf4b38);
+      @include buju(4, #e1cd47);
+    }
+    .project {
+      margin: 20px 0px;
+      @include align_2;
+      flex-wrap: wrap;
+      [class^="project"] {
+        background: white;
+        box-shadow: 1px 0 1px 1px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        margin: 10px 0px;
+        p {
+          border-top-left-radius: 15px;
+          border-top-right-radius: 15px;
+          padding: 15px;
+          background: #f4f5f6;
+          border-bottom: 1px solid #d8e4ef;
+          color: rgba(0, 0, 0, 0.1);
+
+        }
+      }
+      .project_1 {
+        width: 60%;
+        ul {
+          padding: 10px 10px 0px 10px;
+          overflow: hidden;
+          margin-top: 10px;
+          margin: 10px 0px 0px 61px;
+          li {
+            box-shadow: 1px 0 1px 1px rgba(0, 0, 0, 0.1);
+            display: inline;
+            list-style: none;
+            float: left;
+            background: $non_color;
+            margin-left: 15px;
+            padding: 5px;
+            width: 100px;
+            text-align: center;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+          }
+          .li_1 {
+            position: relative;
+            background: white !important;
+            border: 1px solid #ededf0;
+            border-bottom-color: #fff !important;
+          }
+        }
+        .lines {
+          margin-top: -1px;
+          padding: 30px 62px;
+          border: 2px solid $non_color;
+          border-radius: 4px;
+          table {
+            border-collapse: collapse;
+            tr, td {
+              border: 1px solid #cdcacd;
+              height: 28px;
+            }
+            td {
+              width: 150px;
+              font-size: 14px;
+              text-align: center;
+            }
+          }
+          .bc_table {
+            background: #d8e4ef !important;
+          }
+        }
+        .center {
+          margin-top: -1px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding-bottom: 30px;
+        }
+      }
+      .project_2 {
+        width: 38%;
+        span {
+          display: block;
+          padding: 2px 0px !important;
+        }
+        h5 {
+          padding: 10px 0px 0px 0px;
+        }
+        .centers_1 {
+          padding: 15px 40px;
+          margin: 0px 40px 0px 40px;
+        }
+        .centers_1_1 {
+          margin-left: 40px;
+        }
+        .centers_4 {
+          border-bottom: 1px solid #d8e4ef;
+        }
+        .centers_5 {
+          padding: 10px 0px 85px 40px;
+        }
+        .centers_3 {
+          @include align_2;
+          border-top: 1px solid #d8e4ef;
+        }
+        .float_zu {
+          overflow: hidden;
+          margin: 0px 0px 0px 40px;
+          .prices {
+            float: left;
+            border-bottom: 1px solid #d8e4ef;
+            border-right: 1px solid #d8e4ef;
+            margin: 0px 40px 0px 40px;
+            padding: 0px 50px 0px 0px;
+          }
+          .responsible {
+            border-bottom: 1px solid #d8e4ef;
+          }
+        }
+        .search_1 {
+          width: 68px;
+          height: 27px;
+          background: #2189bf;
+          color: white;
+        }
+
+      }
+      .project_3 {
+        width: 38%;
+        ul {
+          @include align_2;
+          padding: 10px 10px 0px 10px;
+          margin: 10px 45px;
+          li {
+            box-shadow: 1px 0 1px 1px rgba(0, 0, 0, 0.1);
+            display: inline;
+            list-style: none;
+            text-align: center;
+            > * {
+              width: 90px;
+            }
+          }
+        }
+        table {
+          display: flex;
+          justify-content: center;
+          margin: 10px 0px 30px 0px;
+          tr, td {
+            height: 40px;
+          }
+          td {
+            width: 65px;
+            font-size: 10px;
+            text-align: center;
+          }
+          .days {
+            border-top: 1px solid #26CAD8;
+            border-bottom: 1px solid #cdcacd;
+          }
+          .red_font {
+            color: #ee6658;
+          }
+          .frame_color {
+            border: 1px solid #eec352;
+          }
+        }
+      }
+      .project_4 {
+        width: 60%;
+        table {
+          border-collapse: collapse;
+          border: 1px solid #cdcacd;
+          padding: 12px 0px 10px 0px;
+          display: flex;
+          justify-content: center;
+          tr, td {
+            height: 27px;
+            border: 1px solid #cdcacd;
+            width: 100px;
+          }
+          tr {
+            cursor: pointer;
+            transition: all ease 0.3s;
+            &:hover {
+              background-color: #eee;
+              box-shadow: 1px 0 1px 1px rgba(0, 0, 0, 0.1);
+            }
+          }
+          td {
+            width: 100px;
+            font-size: 12px;
+            text-align: center;
+          }
+        }
+
+        div {
+          display: inline-block;
+          margin: 0px 30px;
+          @include size(285px, 5px);
+          background-color: #d8e4ef;
+          border-radius: 4px;
+        }
+        b {
+          display: inline;
+        }
+        @mixin bar_chart($c,$number,$bar_color ) {
+          $rate: $number/50000000;
+          .i_#{$c} {
+            display: block;
+            border-radius: 4px;
+            width: $rate*285px;
+            height: 5px;
+            background-color: $bar_color;
+          }
+        }
+        @include bar_chart(1, 46912001, #ee6658);
+        @include bar_chart(2, 29307333, #ee6658);
+        @include bar_chart(3, 23139070, #ee8e2a);
+        @include bar_chart(4, 22885564, #0ec3ee);
+        @include bar_chart(5, 22324792, #0ec3ee);
+        @include bar_chart(6, 21444077, #0ec3ee);
+        @include bar_chart(7, 20114969, #0ec3ee);
+        @include bar_chart(8, 19251680, #0ec3ee);
+        @include bar_chart(9, 19172837, #0ec3ee);
+        @include bar_chart(10, 18544027, #0ec3ee);
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
